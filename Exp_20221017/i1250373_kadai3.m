@@ -14,6 +14,6 @@ result = tonecurve(gimg);
 imshow(result);
 
 function out = tonecurve(x)
-    out_d = 127.5 - 255 / 2 * cos(3 * pi / 255 * double(x));  % 計算結果をいったん実数型(double)で保持
+    out_d = 127.5 - 255 / 2 * cos(3 * pi / 255 * double(x)); 
     out = uint8(out_d);
 end
