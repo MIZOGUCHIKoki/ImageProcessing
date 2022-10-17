@@ -8,17 +8,21 @@ img = imread(img_name);
 %グレイスケール画像に変換
 gimg = 0.3*img(:,:,1) + 0.59*img(:,:,2) + 0.11*img(:,:,3);
 %imshow(gimg);
-result = tonecurve(gimg);
-imshow(result);
+result = gimg / 64;
+result = result * 85;
+imshow(result)
+[hegigh, width] = size(gimg);
+count = zeros(1,256);
 
-function out = tonecurve(x)
-    if x< 64
-        out = 0;
-    elseif x< 128
-        out = 85;
-    elseif x < 192
-        out = 170;
-    else
-        out = 255
+for k = 0:255 % 0<=k<=255
+    for h = 1:width
+        for w = 1:width
+            if gimg(h,w) == k
+                count(k+1) = count(k+1)+1;
+            end
+        end
     end
 end
+figure;
+plot([0:255], count);
+xlim([0 255]);
