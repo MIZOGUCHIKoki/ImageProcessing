@@ -14,5 +14,5 @@ result = tonecurve(gimg);
 imshow(result);
 
 function out = tonecurve(x)
-out=((255-128)/255)*x + 128;
+out=((255-128)/255) * x + 128;
 end
