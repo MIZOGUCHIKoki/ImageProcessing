@@ -1,43 +1,47 @@
-close all
+close all;
 img_name = 'kut.jpg';
-output_name = 'input1_tonemapped.jpg';
 
 img = imread(img_name);
 
 %グレイスケール画像に変換
 gimg = 0.3*img(:,:,1) + 0.59*img(:,:,2) + 0.11*img(:,:,3);
+[height, width] = size(gimg);
+% グレイスケール画像のヒストグラムを出力
+% count = zeros(1,256);
+% for k = 0:255
+%     for h = 1:height
+%         for w = 1:width
+%             if gimg(h,w) == k
+%                 count(k+1) = count(k+1) + 1;
+%             end
+%         end
+%     end
+% end
+% % figure;
+% % plot([0:255], count);
+% % xlim([0 255]);
 
-[height,width] = size(gimg);
-outimg = zeros(height,width);
-hist = zeros(1,256);
-for k=0:255
-    count = 0;
-    for i = 1:height
-        for j = 1:width
-            if gimg(i,j) == k
-                count = count + 1; 
-            end
-        end
-    end
-end
-plot(0:255,hist);
-xlim([0 256]);
 map = zeros(256,1);
 oimg = zeros(height,width);
 
 for k=1:256
-    map(k) = (1.0/2)*(k-1) + 128;
+    map(k) = ((255-128)/255) * k + 128;
 end
+figure('Name','課題1_トーンマップ');
+plot([0:255],map);
+xlim([0 255]);
+ylim([0 255]);
 
 for h = 1:height
     for w = 1:width 
-        oimg(h,w) = map(gimg(h,w)+1);
+        oimg(h,w) = map(gimg(h,w) + 1);
     end
 end
 
-gimg = unit8(oimg);
-figure;
+result = uint8(oimg);
+figure('Name','課題1_結果画像');
 imshow(result);
+
 
 count = zeros(1,256);
 for k = 0:255
@@ -49,6 +53,6 @@ for k = 0:255
         end
     end
 end
-figure;
+figure('Name','課題1_ヒストグラム');
 plot([0:255], count);
 xlim([0 255]);
