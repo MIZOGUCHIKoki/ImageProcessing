@@ -1,4 +1,3 @@
-clear;
 close all
 img_name = 'kut.jpg';
 output_name = 'input1_tonemapped.jpg';
@@ -36,7 +35,7 @@ for h = 1:height
     end
 end
 
-result = unit8(oimg);
+gimg = unit8(oimg);
 figure;
 imshow(result);
 
