@@ -1,4 +1,3 @@
-clear;
 close all;
 
 img_name = 'kut.jpg';
