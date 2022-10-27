@@ -9,7 +9,7 @@ gimg = 0.3*img(:,:,1) + 0.59*img(:,:,2) + 0.11*img(:,:,3);
 imshow(gimg);
 
 [height, width] = size(gimg);
-filter = [-1 0 1 ; -2 0 2 ; -1 0 1]
+filter = [-1 0 1 ; -2 0 2 ; -1 0 1];
 
 oimg = zeros(height, width);
 
