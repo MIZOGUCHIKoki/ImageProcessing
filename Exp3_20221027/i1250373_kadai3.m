@@ -13,6 +13,7 @@ filter = [-1 -2 -1 ; 0 0 0 ; 1 2 1];
 
 oimg = zeros(height, width);
 
+double(gimg);
 
 for h = 2 : height - 1
     for w = 2 : width - 1
