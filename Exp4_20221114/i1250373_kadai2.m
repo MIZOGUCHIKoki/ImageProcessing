@@ -2,11 +2,11 @@ close all;
 
 close all;
 
-img = zeros(256,256);
-[H, W] = size(img);
+result = zeros(256,256);
+[H, W] = size(result);
 for y = 1:H
     for x = 1:W
-        img(y,x) = sin(2 * pi / (256 / 16) * x) + 1;
+        result(y,x) = sin(2 * pi / (256 / 16) * x) + 1;
     end
 end
-imshow(img,[0 2]);
+imshow(result,[0 2]);
